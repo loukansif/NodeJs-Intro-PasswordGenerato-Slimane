@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ansicolor": "^1.1.100",
     "clipboardy": "^3.0.0",
     "yargs": "^17.5.1"
   },

@@ -1,23 +1,39 @@
 import clipboard from "clipboardy";
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
+import { blue, red } from 'ansicolor';
 const argv = yargs(hideBin(process.argv)).argv;
-
-
-// console.log(argv.lengthpwd)
 
 console.log("Node rocks!");
 
+let result = "";
+const characters = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]`;
+const charactersLength = characters.length;
+const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
 function generatePassword(length) {
-  let result = "";
-  let characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+
+  while((!/\d/.test(result) && !specialChars.test(result))){
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
   }
+
   return result;
 }
 
 clipboard.writeSync(generatePassword(argv.lengthpwd));
-console.log(clipboard.readSync());
+
+let pwdFull = clipboard.readSync();
+
+for(let i = 0; i < pwdFull.length; i++) {
+    if(/\d/.test(pwdFull[i])){
+        process.stdout.write((pwdFull[i]).red)        
+    }else if(specialChars.test(pwdFull[i])){
+        process.stdout.write((pwdFull[i]).blue)
+    }else {
+        process.stdout.write((pwdFull[i]))
+    }
+      
+}
+process.stdout.write("\n")
