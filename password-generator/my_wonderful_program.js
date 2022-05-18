@@ -1,3 +1,6 @@
+import clipboard from "clipboardy";
+
+
 console.log("Node rocks!");
 
 function generatePassword(length) {
@@ -11,4 +14,5 @@ function generatePassword(length) {
   return result;
 }
 
-console.log(generatePassword(5));
+clipboard.writeSync(generatePassword(7));
+console.log(clipboard.readSync());
