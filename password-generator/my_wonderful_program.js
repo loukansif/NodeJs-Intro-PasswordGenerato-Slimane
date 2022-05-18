@@ -1,5 +1,10 @@
 import clipboard from "clipboardy";
+import yargs from "yargs/yargs";
+import { hideBin } from "yargs/helpers";
+const argv = yargs(hideBin(process.argv)).argv;
 
+
+// console.log(argv.lengthpwd)
 
 console.log("Node rocks!");
 
@@ -14,5 +19,5 @@ function generatePassword(length) {
   return result;
 }
 
-clipboard.writeSync(generatePassword(7));
+clipboard.writeSync(generatePassword(argv.lengthpwd));
 console.log(clipboard.readSync());

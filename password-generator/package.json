@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "clipboardy": "^3.0.0"
+    "clipboardy": "^3.0.0",
+    "yargs": "^17.5.1"
   },
   "type": "module"
 }
