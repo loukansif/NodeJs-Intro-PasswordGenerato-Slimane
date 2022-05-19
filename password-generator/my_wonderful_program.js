@@ -67,4 +67,4 @@ for (let i = 0; i < pwdFull.length; i++) {
 }
 process.stdout.write("\n");
 
-if(argv.c)generatePasswordWords(5);
+if(argv.p)generatePasswordWords(5);
